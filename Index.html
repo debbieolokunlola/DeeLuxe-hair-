@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeeLuxe Hair & Style - Luxury Fashion & Hair</title>
+
+<style>
+:root{
+  --black:#000;
+  --gold:#D4AF37;
+  --gold-dark:#B8941F;
+  --white:#FFFFFF;
+  --gray:#F5F5F5;
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:var(--white);color:var(--black);}
+header{background:var(--black);color:var(--white);padding:15px 20px;position:sticky;top:0;z-index:1000;border-bottom:3px solid var(--gold);}
+.nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:10px;font-family:Georgia,serif;font-size:26px;font-weight:bold;}
+.logo img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);}
+.logo span{color:var(--gold);}
+nav{display:flex;gap:20px;}
+nav a{color:var(--white);text-decoration:none;font-weight:bold;transition:0.3s;}
+nav a:hover{color:var(--gold);}
+.btn{display:inline-block;border:0;border-radius:8px;padding:12px 20px;cursor:pointer;font-weight:bold;text-decoration:none;transition:0.3s;}
+.gold{background:var(--gold);color:var(--black);}
+.gold:hover{background:var(--gold-dark);}
+.whatsapp{background:#168c4b;color:var(--white);}
+.whatsapp:hover{background:#0f6e3a;}
+.outline{background:var(--white);border:2px solid var(--gold);color:var(--black);}
+.outline:hover{background:var(--gold);}
+.btn-small{padding:8px 12px;font-size:13px;}
+.btn-danger{background:#c0392b;color:var(--white);}
+.hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white);padding:30px;background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)),url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1600&q=80") center/cover;border-bottom:4px solid var(--gold);}
+.hero h1{font-family:Georgia,serif;font-size:clamp(40px,7vw,70px);color:var(--gold);}
+.hero p{font-size:18px;margin:20px auto;max-width:600px;}
+section{padding:70px 20px;background:var(--white);}
+.title{text-align:center;margin-bottom:40px;}
+.title h2{font-family:Georgia,serif;font-size:40px;margin-bottom:10px;color:var(--black);}
+.title h2 span{color:var(--gold);}
+.title p{color:#555;}
+.products{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:25px;}
+.card{background:var(--white);border:2px solid var(--gray);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:0.3s;}
+.card:hover{border-color:var(--gold);transform:translateY(-5px);}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--gray);}
+.card-body{padding:15px;}
+.card-category{color:var(--gold-dark);font-size:11px;text-transform:uppercase;font-weight:bold;letter-spacing:1px;}
+.card h3{margin:8px 0;font-size:16px;color:var(--black);}
+.price{font-weight:bold;font-size:19px;margin:10px 0;color:var(--gold-dark);}
+.card-buttons{display:flex;gap:8px;}
+.card-buttons button{flex:1;}
+.empty{grid-column:1/-1;text-align:center;padding:50px;color:#777;}
+.about{background:var(--black);color:var(--white);}
+.about-inner{max-width:900px;margin:auto;text-align:center;}
+.about h2{color:var(--gold);}
+footer{background:var(--black);color:var(--white);padding:50px 20px;text-align:center;border-top:3px solid var(--gold);}
+footer p{color:#aaa;margin:8px;}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;z-index:5000;}
+.modal.show{display:flex;}
+.modal-box{background:var(--white);width:100%;max-width:650px;max-height:90vh;overflow:auto;border-radius:15px;padding:30px;position:relative;border:3px solid var(--gold);}
+.close{position:absolute;right:15px;top:12px;border:0;background:var(--black);color:var(--gold);width:35px;height:35px;border-radius:50%;cursor:pointer;font-size:20px;font-weight:bold;}
+.form-group{margin-bottom:15px;}
+.form-group label{display:block;font-weight:bold;font-size:13px;margin-bottom:5px;color:var(--black);}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px;border:2px solid var(--gray);border-radius:7px;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold);outline:none;}
+.form-group textarea{min-height:90px;}
+.cart-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--gray);align-items:center;}
+.cart-item img{width:65px;height:65px;object-fit:cover;border-radius:7px;border:2px solid var(--gold);}
+.cart-info{flex:1;}
+.qty{display:flex;gap:8px;align-items:center;margin-top:5px;}
+.qty button{width:28px;height:28px;border:2px solid var(--gold);background:var(--white);cursor:pointer;font-weight:bold;}
+.cart-total{display:flex;justify-content:space-between;font-size:19px;font-weight:bold;padding:20px 0;color:var(--gold-dark);}
+.admin-product{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--gray);padding:10px 0;}
+.admin-product img{width:60px;height:60px;object-fit:cover;border-radius:7px;border:2px solid var(--gold);}
+.admin-info{flex:1;}
+.admin-actions{display:flex;gap:5px;}
+.hidden{display:none!important;}
+.image-preview{width:100%;height:150px;object-fit:cover;border:2px dashed var(--gold);border-radius:8px;margin-top:8px;display:none;}
+@media(max-width:900px){.products{grid-template-columns:repeat(2,1fr);} nav{display:none;}}
+@media(max-width:500px){.products{grid-template-columns:1fr;}.card-buttons{flex-direction:column;}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="nav">
+<div class="logo">
+<img src="https://via.placeholder.com/40/D4AF37/000?text=D" alt="DeeLuxe">
+Dee<span>Luxe</span>
+</div>
+<nav>
+<a href="#shop">Shop</a>
+<a href="#about">About</a>
+<a href="https://wa.me/2349158770593" target="_blank">WhatsApp</a>
+</nav>
+<div>
+<button class="btn gold" onclick="openCart()">🛒 <span id="cartCount">0</span></button>
+<button class="btn outline" onclick="openAdminLogin()">⚙️</button>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<h1>DeeLuxe Hair & Style</h1>
+<p>Luxury Fashion • Premium Hair • Signature Style</p><br>
+<a href="#shop" class="btn gold">Shop Now</a>
+</div>
+</section>
+
+<section id="shop">
+<div class="title"><h2>Shop <span>DeeLuxe</span></h2><p>Choose from our fashion, hair products and hair services.</p></div>
+<div class="products" id="products"><div class="empty">Loading products...</div></div>
+</section>
+
+<section id="about" class="about">
+<div class="about-inner">
+<h2>About DeeLuxe</h2><br>
+<p>DeeLuxe Hair & Style is your destination for luxury fashion, premium human hair and professional hair services. Located at Old Education Road, Oye-Ekiti. We help you look and feel confident.</p>
+</div>
+</section>
+
+<footer>
+<h2 class="logo">Dee<span>Luxe</span></h2>
+<p>Hair • Fashion • Style</p>
+<p>Old Education Road, Oye-Ekiti, Ekiti State</p>
+<p>WhatsApp: 09158770593</p>
+<p>© 2026 DeeLuxe. All Rights Reserved.</p>
+</footer>
+
+<!-- CART MODAL -->
+<div class="modal" id="cartModal"><div class="modal-box"><button class="close" onclick="closeModal('cartModal')">×</button><h2 style="color:var(--gold)">Shopping Cart</h2><br><div id="cartItems"></div><div class="cart-total"><span>Total</span><span id="cartTotal">₦0</span></div><button class="btn gold" style="width:100%" onclick="openCheckout()">Proceed to Checkout</button></div></div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal" id="checkoutModal"><div class="modal-box"><button class="close" onclick="closeModal('checkoutModal')">×</button><h2 style="color:var(--gold)">Delivery Details</h2><br><form id="checkoutForm"><div class="form-group"><label>Full Name</label><input id="customerName" required></div><div class="form-group"><label>Phone Number</label><input id="customerPhone" required></div><div class="form-group"><label>Delivery Address</label><textarea id="customerAddress" required></textarea></div><p style="background:var(--gray);padding:15px;border-radius:8px;border-left:4px solid var(--gold)"><strong>Payment:</strong> Moniepoint<br>Account: <strong>9158770593</strong><br>Name: <strong>Olokunlola Pamilerin Deborah</strong></p><br><button class="btn whatsapp" style="width:100%" type="submit">Send Order via WhatsApp</button></form></div></div>
+
+<!-- ADMIN LOGIN -->
+<div class="modal" id="loginModal"><div class="modal-box"><button class="close" onclick="closeModal('loginModal')">×</button><h2 style="color:var(--gold)">DeeLuxe Admin</h2><br><form id="loginForm"><div class="form-group"><label>Admin Password</label><input type="password" id="adminPassword" placeholder="Enter password" required></div><button class="btn gold" style="width:100%" type="submit">Login</button></form></div></div>
+
+<!-- ADMIN DASHBOARD -->
+<div class="modal" id="adminModal"><div class="modal-box"><button class="close" onclick="closeModal('adminModal')">×</button><h2 style="color:var(--gold)">DeeLuxe Admin Dashboard</h2><br>
+
+<h3>Backup & Restore</h3>
+<button class="btn gold" onclick="exportData()">📥 Export Data</button>
+<button class="btn outline" onclick="document.getElementById('importFile').click()">📤 Import Data</button>
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+<p style="font-size:12px;color:#777;margin-top:8px">Export saves all products. Import restores them.</p>
+<hr style="margin:25px 0;border-color:var(--gold)">
+
+<button class="btn gold" onclick="showProductForm()">+ Add Product</button><br><br>
+<div id="productFormBox" class="hidden">
+<h3 id="productFormTitle">Add Product</h3><br>
+<form id="productForm">
+<input type="hidden" id="productId">
+<div class="form-group"><label>Product Name</label><input id="productName" required></div>
+<div class="form-group"><label>Price</label><input type="number" id="productPrice" required></div>
+<div class="form-group"><label>Category</label><select id="productCategory" required><option value="">Select category</option><option value="Fashion">Fashion</option><option value="Hair Products">Hair Products</option><option value="Hair Services">Hair Services</option></select></div>
+<div class="form-group">
+<label>Product Image</label>
+<input type="file" id="productImageFile" accept="image/*" onchange="previewImage(event)">
+<input type="hidden" id="productImage">
+<img id="imagePreview" class="image-preview">
+<p style="font-size:12px;color:#777">Pick from gallery. Leave empty to keep current image when editing.</p>
+</div><br>
+<button type="submit" class="btn gold">Save Product</button>
+<button type="button" class="btn outline" onclick="cancelProductForm()">Cancel</button>
+</form><hr style="margin:25px 0;border-color:var(--gold)">
+</div>
+<h3>Products</h3><br><div id="adminProducts"></div><br>
+<button class="btn outline" onclick="logout()">Logout</button>
+</div></div>
+
+<script>
+const ADMIN_PASS = "DeeLuxe2026!";
+const WHATSAPP = "2349158770593";
+
+let products = JSON.parse(localStorage.getItem("deeluxe_products")) || [
+  {id:1, name:"Premium Human Hair Wig", price:85000, category:"Hair Products", image:"https://images.unsplash.com/photo-1522337360788-459be2b2af9f?q=80&w=800"},
+  {id:2, name:"Luxury Evening Gown", price:45000, category:"Fashion", image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800"},
+  {id:3, name:"Wig Installation", price:15000, category:"Hair Services", image:"https://images.unsplash.com/photo-1560869713-7a7a3a86d8c6?q=80&w=800"}
+];
+let cart = JSON.parse(localStorage.getItem("deeluxe_cart")) || [];
+let editingId = null;
+
+const productsDiv = document.getElementById("products");
+const cartItems = document.getElementById("cartItems");
+const cartTotal = document.getElementById("cartTotal");
+const cartCount = document.getElementById("cartCount");
+const adminProducts = document.getElementById("adminProducts");
+const productFormBox = document.getElementById("productFormBox");
+
+function saveAll(){localStorage.setItem("deeluxe_products",JSON.stringify(products));localStorage.setItem("deeluxe_cart",JSON.stringify(cart));}
+function naira(n){return "₦"+Number(n).toLocaleString("en-NG");}
+function openModal(id){document.getElementById(id).classList.add("show");}
+function closeModal(id){document.getElementById(id).classList.remove("show");}
+
+/* IMAGE UPLOAD */
+function previewImage(event){
+  const file = event.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    document.getElementById("productImage").value = e.target.result;
+    document.getElementById("imagePreview").src = e.target.result;
+    document.getElementById("imagePreview").style.display = "block";
+  }
+  reader.readAsDataURL(file);
+}
+
+/* EXPORT / IMPORT */
+function exportData(){
+  const data = {products, date: new Date().toLocaleString()};
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "DeeLuxe-Backup-" + Date.now() + ".json";
+  a.click();
+  alert("Backup downloaded! Save this file safely.");
+}
+function importData(event){
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const data = JSON.parse(e.target.result);
+    products = data.products || [];
+    saveAll(); renderProducts(); loadAdminProducts();
+    alert("Data imported successfully!");
+  };
+  reader.readAsText(file);
+}
+
+function renderProducts(){
+  if(products.length === 0){ productsDiv.innerHTML = '<div class="empty">No products yet. Login as Admin to add products.</div>'; return; }
+  productsDiv.innerHTML = products.map(p=>`
+    <div class="card">
+      <img src="${p.image}" alt="${p.name}">
+      <div class="card-body">
+        <div class="card-category">${p.category}</div>
+        <h3>${p.name}</h3>
+        <div class="price">${naira(p.price)}</div>
+        <div class="card-buttons">
+          <button class="btn gold" onclick="addToCart(${p.id})">Add to Cart</button>
+          <button class="btn outline" onclick="buyNow(${p.id})">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* CART */
+function addToCart(id){const p=products.find(x=>x.id==id);const item=cart.find(x=>x.id==id);if(item)item.quantity++;else cart.push({...p,quantity:1});saveAll();updateCart();alert(p.name+" added to cart 🛒");}
+function buyNow(id){addToCart(id);openCheckout();}
+function updateCart(){cartCount.innerText=cart.reduce((a,b)=>a+b.quantity,0);}
+function openCart(){renderCart();openModal("cartModal");}
+function renderCart(){
+  if(cart.length==0){cartItems.innerHTML='<div class="empty">Your cart is empty.</div>';cartTotal.innerText="₦0";return;}
+  cartItems.innerHTML=cart.map(i=>`
+    <div class="cart-item">
+      <img src="${i.image}">
+      <div class="cart-info">
+        <strong>${i.name}</strong>
+        <div>${naira(i.price)}</div>
+        <div class="qty">
+          <button onclick="changeQty(${i.id},-1)">−</button>
+          <span>${i.quantity}</span>
+          <button onclick="changeQty(${i.id},1)">+</button>
+        </div>
+      </div>
+      <button onclick="removeItem(${i.id})" style="border:0;background:none;color:#c0392b;font-size:20px">×</button>
+    </div>
+  `).join('');
+  cartTotal.innerText=naira(cart.reduce((a,b)=>a+b.price*b.quantity,0));
+}
+function changeQty(id,c){const i=cart.find(x=>x.id==id);i.quantity+=c;if(i.quantity<=0)cart=cart.filter(x=>x.id!=id);saveAll();renderCart();updateCart();}
+function removeItem(id){cart=cart.filter(x=>x.id!=id);saveAll();renderCart();updateCart();}
+
+function openCheckout(){if(cart.length==0)return alert("Cart is empty");closeModal("cartModal");openModal("checkoutModal");}
+document.getElementById("checkoutForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  let msg="*NEW ORDER FROM DEELUXE*%0A%0A";
+  msg+="*Name:* "+customerName.value+"%0A";
+  msg+="*Phone:* "+customerPhone.value+"%0A";
+  msg+="*Address:* "+customerAddress.value+"%0A%0A*ITEMS*%0A";
+  let total=0;cart.forEach(i=>{total+=i.price*i.quantity;msg+=i.name+" x "+i.quantity+" = "+naira(i.price*i.quantity)+"%0A";});
+  msg+="%0A*TOTAL:* "+naira(total);
+  msg+="%0A%0A*Payment:* Moniepoint 9158770593 - Olokunlola Pamilerin Deborah";
+  window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");
+  cart=[];saveAll();updateCart();closeModal("checkoutModal");
+});
+
+/* ADMIN */
+function openAdminLogin(){openModal("loginModal");}
+document.getElementById("loginForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  if(adminPassword.value===ADMIN_PASS){
+    closeModal("loginModal");
+    openModal("adminModal");
+    loadAdminProducts();
+    adminPassword.value = "";
+  }else{
+    alert("Wrong password!");
+  }
+});
+
+function showProductForm(){editingId=null;document.getElementById("productFormTitle").innerText="Add Product";productFormBox.classList.remove("hidden");productForm.reset();document.getElementById("imagePreview").style.display="none";}
+function cancelProductForm(){productFormBox.classList.add("hidden");productForm.reset();document.getElementById("imagePreview").style.display="none";editingId=null;}
+
+function editProduct(id){
+  editingId = id;
+  const p = products.find(x=>x.id==id);
+  document.getElementById("productFormTitle").innerText="Edit Product";
+  productName.value = p.name;
+  productPrice.value = p.price;
+  productCategory.value = p.category;
+  productImage.value = p.image;
+  document.getElementById("imagePreview").src = p.image;
+  document.getElementById("imagePreview").style.display = "block";
+  productFormBox.classList.remove("hidden");
+}
+
+function loadAdminProducts(){
+  adminProducts.innerHTML=products.map(p=>`
+    <div class="admin-product">
+      <img src="${p.image}">
+      <div class="admin-info"><strong>${p.name}</strong><br>${naira(p.price)} - ${p.category}</div>
+      <div class="admin-actions">
+        <button class="btn-small gold" onclick="editProduct(${p.id})">Edit</button>
+        <button class="btn-small btn-danger" onclick="deleteProduct(${p.id})">Delete</button>
+      </div>
+    </div>
+  `).join('') || "<p>No products</p>";
+}
+
+function deleteProduct(id){
+  if(confirm("Delete this product?")){
+    products=products.filter(p=>p.id!=id);
+    saveAll();loadAdminProducts();renderProducts();
+  }
+}
+
+document.getElementById("productForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  const img = document.getElementById("productImage").value || products.find(p=>p.id==editingId)?.image || "https://via.placeholder.com/600/D4AF37/000";
+  const productData = {
+    name:productName.value,
+    price:Number(productPrice.value),
+    category:productCategory.value,
+    image: img
+  };
+
+  if(editingId){
+    const index = products.findIndex(p=>p.id==editingId);
+    products[index] = {...products[index],...productData};
+  }else{
+    products.push({id:Date.now(),...productData});
+  }
+  saveAll();cancelProductForm();loadAdminProducts();renderProducts();
+});
+
+function logout(){closeModal("adminModal");}
+
+renderProducts();updateCart();
+</script>
+</body>
+  </html>
+  
